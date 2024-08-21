@@ -1,7 +1,7 @@
 
 import { useForm } from 'react-hook-form';
 import {useNavigate} from 'react-router-dom'
-import { registerUser } from '../services/services';
+import { isEmailOrPhoneExcists, registerUser } from '../services/services';
 
 const Registration = () => {
 
@@ -30,7 +30,7 @@ const Registration = () => {
     return true; // Return true if valid
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const { password, confirmpassword } = data;
     const passwordValidation = validatePasswords(password, confirmpassword);
 
@@ -44,6 +44,11 @@ const Registration = () => {
 
     clearErrors('confirmpassword');
     console.log("Started");
+
+    const isExcists = await isEmailOrPhoneExcists(data).then((res)=>{return res.data});
+    if(isExcists){
+      return;
+    }
     const res = registerUser(data);
     console.log(res);
     console.log("Data stored");

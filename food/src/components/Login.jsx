@@ -2,10 +2,12 @@ import {useForm} from 'react-hook-form'
 import { Link } from 'react-router-dom';
 import { validate } from '../services/services'
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 
-    const bgImgStyle = {backgroundImage: "url(/food2.png)", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center center", width: "100vw", height: "100vh", position: "absolute", left: 0, top: 0 };
+    const bgImgStyle = {backgroundImage: "url(https://www.terrafood.co.in/cdn/shop/files/VegBiryani.jpg?v=1687766592)", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center center", width: "100vw", height: "100vh", position: "absolute", left: 0, top: 0 };
 
     const navigate = useNavigate();
 
@@ -15,34 +17,43 @@ const Login = () => {
         register,   //registers the fields and helps to perform form validation
         handleSubmit,   //handles submit and returns fields and values as objects
         formState : {errors},  //helps to display error message
-        setError,
+        // setError,
         clearErrors
     } = useForm();
 
 
     //To handle submit
     const onSubmit = async (data)=>{
+
+      clearErrors();
+
       const resValue = await validate(data).then((res)=>{return res.data})
       console.log(data)
       console.log(resValue)
 
-      if(resValue == "email"){
-        setError('username', {
-          type: 'manual',
-          message: "Invalid username",
-        });
-      } else if(resValue == "password"){
-        setError('password', {
-          type: 'manual',
-          message: "Invalid password",
-        });
-      } else{
-        navigate("/")
-      }
+      if (resValue === "email") {
+        toast.warning("Invalid username")
+        // Set error for the username field if email is incorrect
+        // setError('email', {
+        //     type: 'manual',
+        //     message: "Invalid username",
+        // });
+    } else if (resValue === "password") {
+      toast.error("Invalid password")
+        // Set error for the password field if password is incorrect
+        // setError('password', {
+        //     type: 'manual',
+        //     message: "Invalid password",
+        // });
+    } else if (resValue === "granted") {
+        // Navigate to another page if access is granted
+        navigate("/home"); 
+    }
     }
 
   return (
     <>
+    <ToastContainer />
     <div style={bgImgStyle} className="login">
 
 
@@ -52,7 +63,7 @@ const Login = () => {
             <input
             className='placeholder-white'
             placeholder='username'
-            {...register("username", {
+            {...register("email", {
               required: "Username is required",
               minLength: {
                 value: 6,
@@ -65,7 +76,7 @@ const Login = () => {
             })}
           />
           {/* error message to display if condition is not met */}
-          {errors.username && <p><img src="/warning.svg" width={"15px"} alt="" /> {errors.username.message}</p>}
+          {errors.email && <p>{errors.email.message}</p>}
 
           <input
             className='placeholder-slate-100'
