@@ -15,7 +15,7 @@ const Navbar = () => {
         <div className="logo">𝒻𝑜𝑜𝒹𝒾𝑒𝑒</div>
         <div className='nav-right'>
           <div onClick={()=>navigate("/home")} className="home">Home</div>
-          <div className="contact-us">Contact us</div>
+          {/* <div className="contact-us">Contact us</div> */}
           <div className='user-name'>{userName}</div>
           <div onClick={()=>navigate("/checkout")} className='cart'>Cart</div>
           <div onClick={()=>navigate("/")} className="logout">logout <img src="/logout.png" alt="" width={"20px"} /></div>

@@ -1,5 +1,12 @@
+import { useState } from "react"
 
 const PaymentForm = () => {
+
+    const [name , setName] = useState("");
+    const [cardNumber, setCardNumber] = useState("");
+    const [expiry , setExpiry] = useState("");
+    const [cvv , setCvv] = useState("");
+
   return (
     
     <div className="container p-0">
@@ -9,25 +16,25 @@ const PaymentForm = () => {
                 <div className="col-12">
                     <div className="d-flex flex-column">
                         <p className="text mb-1">Person Name</p>
-                        <input className="form-control mb-3" type="text" placeholder="Name" value="Barry Allen" />
+                        <input className="form-control mb-3" type="text" placeholder="Name" value={name} onChange={(e)=>{setName(e.target.value)}} />
                     </div>
                 </div>
                 <div className="col-12">
                     <div className="d-flex flex-column">
                         <p className="text mb-1">Card Number</p>
-                        <input className="form-control mb-3" type="text" placeholder="1234 5678 435678" />
+                        <input className="form-control mb-3" type="text" placeholder="1234 5678 435678" value={cardNumber} onChange={(e)=>{setCardNumber(e.target.value)}} />
                     </div>
                 </div>
                 <div className="col-6">
                     <div className="d-flex flex-column">
                         <p className="text mb-1">Expiry</p>
-                        <input className="form-control mb-3" type="text" placeholder="MM/YYYY" />
+                        <input className="form-control mb-3" type="text" placeholder="MM/YYYY" value={expiry} onChange={(e)=>{setExpiry(e.target.value)}} />
                     </div>
                 </div>
                 <div className="col-6">
                     <div className="d-flex flex-column">
                         <p className="text mb-1">CVV/CVC</p>
-                        <input className="form-control mb-3 pt-2 " type="password" placeholder="***" />
+                        <input className="form-control mb-3 pt-2 " type="password" placeholder="***" value={cvv} onChange={(e)=>{setCvv(e.target.value)}} />
                     </div>
                 </div>
             </div>

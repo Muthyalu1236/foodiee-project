@@ -20,13 +20,13 @@ export const getFoodItems = (type)=>{
 
 
 export const insertOrders = (data)=>{
-    return axios.post('http://localhost:8080/insertAllOrders',data);
+    return axios.post('http://localhost:8080/orders/insertAll',data);
 }
 
 export const getAllOrders = ()=>{
-    return axios.get('https://localhost:8080/getAllOrders');
+    return axios.get('https://localhost:8080/orders/getAll');
 }
 
 export const getOrdersByUser = (username)=>{
-    return axios.get(`https://localhost:8080/getOrdersBy/${username}`);
+    return axios.get(`https://localhost:8080/orders/getBy/${username}`);
 }

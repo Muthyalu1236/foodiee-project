@@ -29,11 +29,13 @@ public class OrdersImplimentation implements OrdersService{
 	}
 
 	@Override
-	public List<Orders> getOrders() {
+	public List<OrdersDto> getOrders() {
 		
 		List<Orders> orders = ordersRepo.findAll();
 		
-		return orders;
+		List<OrdersDto> orderDto = orders.stream().map((order)->OrderMapper.mapToOrderDto(order)).toList();
+		
+		return orderDto;
 		
 	}
 
@@ -47,12 +49,13 @@ public class OrdersImplimentation implements OrdersService{
 	}
 
 	@Override
-	public List<Orders> getOrdersByUsername(String username) {
+	public List<OrdersDto> getOrdersByUsername(String username) {
 		
 		List<Orders> orders = ordersRepo.findByUsername(username);
 		
+		List<OrdersDto> ordersDto = orders.stream().map((order)->OrderMapper.mapToOrderDto(order)).toList();
 		
-		return orders;
+		return ordersDto;
 	}
 
 }

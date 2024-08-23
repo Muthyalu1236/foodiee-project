@@ -74,19 +74,35 @@ const StoreContextProvider = (props) => {
     const [totalPayable, setTotalPayable] = useState(0);
 
     useEffect(() => {
-      updateTotalPrice();
-    
-    }, [cartItems])
-    
-
-
-    const updateTotalPrice = ()=>{
         let cost = 0;
         Object.entries(cartItems).forEach(([itemName, { quantity, price }]) => {
             cost += price * quantity;
         });
         setTotalPayable(cost);
-    }
+    
+    }, [cartItems])
+    
+
+
+    // const updateTotalPrice = ()=>{
+    //     let cost = 0;
+    //     Object.entries(cartItems).forEach(([itemName, { quantity, price }]) => {
+    //         cost += price * quantity;
+    //     });
+    //     setTotalPayable(cost);
+    // }
+
+    // const updateTotalPrice = () => {
+    //     let cost = 0; // Initialize cost to 0
+    //     Object.entries(cartItems).forEach(([itemName, { quantity, price }]) => {
+    //         cost += price * quantity;
+    //     });
+    //     setTotalPayable(cost);
+    // };
+
+    // useEffect(() => {
+    //     updateTotalPrice();
+    // }, [cartItems, updateTotalPrice]);
 
     const addToCart = (itemName, price) => {
         setCartItems((prev) => {

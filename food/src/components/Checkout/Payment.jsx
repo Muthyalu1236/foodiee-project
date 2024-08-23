@@ -6,8 +6,8 @@ import { insertOrders } from '../../services/services'
 
 const Payment = () => {
 
-    const {insertCartToDatabase} = useContext(StoreContext);
-    const {cartDb} = useContext(StoreContext);
+    const {insertCartToDatabase, cartDb, totalPayable} = useContext(StoreContext);
+    // const {cartDb} = useContext(StoreContext);
 
     const handleClick = async ()=>{
         console.log("before calling")
@@ -29,9 +29,8 @@ const Payment = () => {
             <div className="payment-form">
                 <PaymentForm />
             </div>
-            <div className="payment-button">   
-                {/* <button type="button" className="btn btn-success">Pay</button> */}
-                <button className='pay-button' onClick={handleClick} >Pay</button>
+            <div className="payment-button">
+                <button className='pay-button' onClick={handleClick} >Pay {totalPayable > 0 ? `₹${totalPayable}` : ""}</button>
             </div>
         </div>
     </div>

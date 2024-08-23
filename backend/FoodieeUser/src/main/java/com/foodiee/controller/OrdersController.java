@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.foodiee.dao.Orders;
@@ -18,13 +19,14 @@ import com.foodiee.mapper.OrderMapper;
 import com.foodiee.service.OrdersService;
 
 @CrossOrigin("*")
+@RequestMapping("/orders")
 @RestController
 public class OrdersController {
 	
 	@Autowired
 	OrdersService ordersService;
 	
-	@PostMapping("/insertOrder")
+	@PostMapping("/insert")
 	public ResponseEntity<String> insertOrder(@RequestBody OrdersDto orderData){
 		
 		ordersService.createOrder(orderData);
@@ -33,29 +35,27 @@ public class OrdersController {
 		
 	}
 	
-	@PostMapping("/insertAllOrders")
+	@PostMapping("/insertAll")
 	public ResponseEntity<String> insertAllOrders(@RequestBody List<OrdersDto> ordersDto){
+		
 		ordersService.createOrders(ordersDto);
+		
 		return new ResponseEntity<>("Multiple orders inserted successfully.",HttpStatus.OK);
 	}
 	
-	@GetMapping("/getOrders")
+	@GetMapping("/get")
 	public ResponseEntity<List<OrdersDto>> getOrders(){
 		
-		List<Orders> orders = ordersService.getOrders();
-		
-		List<OrdersDto> ordersDto = orders.stream().map((order)->OrderMapper.mapToOrderDto(order)).toList();
+		List<OrdersDto> ordersDto = ordersService.getOrders();
 		
 		return new ResponseEntity<>(ordersDto,HttpStatus.OK);
 		
 	}
 	
-	@GetMapping("/getOrdersBy/{username}")
+	@GetMapping("/getBy/{username}")
 	public ResponseEntity<List<OrdersDto>> getOrders(@PathVariable String username){
 		
-		List<Orders> orders = ordersService.getOrdersByUsername(username);
-		
-		List<OrdersDto> ordersDto = orders.stream().map((order)->OrderMapper.mapToOrderDto(order)).toList();
+		List<OrdersDto> ordersDto = ordersService.getOrdersByUsername(username);
 		
 		return new ResponseEntity<>(ordersDto,HttpStatus.OK);
 		

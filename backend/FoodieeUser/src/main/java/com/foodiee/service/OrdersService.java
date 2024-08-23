@@ -11,8 +11,8 @@ public interface OrdersService {
 	
 	String createOrders(List<OrdersDto> ordersDto);
 	
-	List<Orders> getOrders();
+	List<OrdersDto> getOrders();
 	
-	List<Orders> getOrdersByUsername(String username);
+	List<OrdersDto> getOrdersByUsername(String username);
 
 }
