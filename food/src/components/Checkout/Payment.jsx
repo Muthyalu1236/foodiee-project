@@ -20,11 +20,11 @@ const Payment = () => {
   return (
     <div className='payment-container'>
         <div className="payment-gateway">
-            <div className="payment-methods">
+            {/* <div className="payment-methods">
                 <button>UPI</button>
                 <button>credit</button>
                 <button>debit</button>
-            </div>
+            </div> */}
             <h3>Enter credit card details</h3>
             <div className="payment-form">
                 <PaymentForm />

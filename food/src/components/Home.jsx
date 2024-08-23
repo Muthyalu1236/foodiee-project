@@ -9,9 +9,9 @@ import FoodMenu from './Fooditems/FoodMenu';
 
 const Home = () => {
 
-  useEffect(() => {
-    toast.success("Successfully logged in!");
-  },[])
+  // useEffect(() => {
+  //   toast.success("Successfully logged in!");
+  // },[])
   
 
     
@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <>
 
-      <ToastContainer />
+      {/* <ToastContainer /> */}
       <div className="home-container">
         <Navbar />
         <Header />

@@ -61,7 +61,7 @@
 // export default StoreContextProvider;
 
 
-import { useState, createContext } from 'react';
+import { useState, useEffect, createContext } from 'react';
 
 export const StoreContext = createContext(null);
 
@@ -70,6 +70,23 @@ const StoreContextProvider = (props) => {
     const [cartItems, setCartItems] = useState({});
 
     const [cartDb, setCartDb] = useState([]);
+
+    const [totalPayable, setTotalPayable] = useState(0);
+
+    useEffect(() => {
+      updateTotalPrice();
+    
+    }, [cartItems])
+    
+
+
+    const updateTotalPrice = ()=>{
+        let cost = 0;
+        Object.entries(cartItems).forEach(([itemName, { quantity, price }]) => {
+            cost += price * quantity;
+        });
+        setTotalPayable(cost);
+    }
 
     const addToCart = (itemName, price) => {
         setCartItems((prev) => {
@@ -83,7 +100,7 @@ const StoreContextProvider = (props) => {
                 }
             };
 
-            console.log(updatedCartItems);
+            console.log(updatedCartItems)
 
             return updatedCartItems;
         });
@@ -114,7 +131,7 @@ const StoreContextProvider = (props) => {
     const convertCartToDbFormat = () => {
         const ordersList = Object.entries(cartItems).map(([itemName, { quantity, price }]) => ({
             username: userName,
-            foodItem: itemName,
+            fooditem: itemName,
             quantity: quantity,
             price: price
         }));
@@ -138,7 +155,8 @@ const StoreContextProvider = (props) => {
         addToCart,
         removeFromCart,
         cartDb,
-        insertCartToDatabase
+        insertCartToDatabase,
+        totalPayable
     };
 
     return (

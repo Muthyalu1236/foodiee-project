@@ -3,6 +3,7 @@ import Login from "./components/Login";
 import Registration from "./components/Registration";
 import Home from "./components/Home"
 import Checkout from "./components/Checkout";
+import EndPage from "./components/Checkout/EndPage";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/register" element={<Registration />} />
         <Route path="/home" element={<Home />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/thankyou" element={<EndPage />} />
       </Routes>
     </BrowserRouter>
   );

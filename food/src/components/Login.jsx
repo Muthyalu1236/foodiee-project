@@ -49,9 +49,14 @@ const Login = () => {
         //     message: "Invalid password",
         // });
     } else if (resValue === "granted") {
-        setUserName(data.email);
+
+      toast.success("Successfully logged in!");
+      setUserName(data.email);
+      setTimeout(()=>{
         // Navigate to another page if access is granted
         navigate("/home"); 
+      },2000)
+        
     }
     }
 

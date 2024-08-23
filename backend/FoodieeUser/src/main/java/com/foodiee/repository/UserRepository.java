@@ -7,7 +7,6 @@ import com.foodiee.dao.User;
 public interface UserRepository extends JpaRepository<User, Integer>{
 
 	User findByEmail(String email);
-//	List<User> findByEmailOrPhone(String email, Long phone);
 	
 	boolean existsByEmail(String email);
 

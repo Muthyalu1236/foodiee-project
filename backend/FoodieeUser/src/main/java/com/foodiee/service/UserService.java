@@ -8,8 +8,6 @@ public interface UserService {
 	
 	String getPasswordByEmail(String email);
 	
-//	boolean emailOrPhoneExcists(String email, Long phone);
-	
 	boolean existsByEmailOrPhone(String email, Long phone);
 
 }

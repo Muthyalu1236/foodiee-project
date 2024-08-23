@@ -18,7 +18,7 @@ const Navbar = () => {
           <div className="contact-us">Contact us</div>
           <div className='user-name'>{userName}</div>
           <div onClick={()=>navigate("/checkout")} className='cart'>Cart</div>
-          <div onClick={()=>navigate("/")} className="logout">logout</div>
+          <div onClick={()=>navigate("/")} className="logout">logout <img src="/logout.png" alt="" width={"20px"} /></div>
         </div>
     </div>
   )
