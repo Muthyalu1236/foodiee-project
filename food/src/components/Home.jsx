@@ -1,21 +1,30 @@
+import './Home.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
+import Navbar from './Navbar/Navbar';
+import Header from './Header/Header';
+import FoodMenu from './Fooditems/FoodMenu';
 
 
 const Home = () => {
 
   useEffect(() => {
     toast.success("Successfully logged in!");
-  }, [])
+  },[])
   
 
     
 
   return (
     <>
-        <ToastContainer />
-        <h1>Home page</h1>
+
+      <ToastContainer />
+      <div className="home-container">
+        <Navbar />
+        <Header />
+        <FoodMenu />
+      </div>
         
     </>
   )

@@ -1,0 +1,54 @@
+.payment-container{
+    position: relative;
+    width: 50vw;
+    height: 90vh;
+    background-color: rgba(198, 198, 198, 0.233);
+    padding: 12vh;
+}
+
+.payment-gateway{
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.951);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 20px;
+}
+
+.payment-methods{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px;
+}
+
+.payment-methods button{
+    border: none;
+    border-radius: 10px;
+    font-size: x-large;
+    background-color: rgba(49, 150, 239, 0.629);
+    color: white;
+}
+
+.payment-methods button:hover{
+    background-color: rgb(49, 151, 239);
+}
+
+.payment-methods button:active{
+    background-color: rgb(65, 65, 241);
+}
+
+.pay-button{
+    border: none;
+    font-size: larger;
+    background-color: rgba(49, 129, 233, 0.804);
+    padding: 5px 20px;
+    border-radius: 20px;
+    margin-top: -10px;
+    margin-left: 40px;
+}
+
+.pay-button:hover{
+    background-color: rgb(49, 128, 233);
+}

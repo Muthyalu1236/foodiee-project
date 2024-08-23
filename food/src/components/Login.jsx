@@ -4,6 +4,8 @@ import { validate } from '../services/services'
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useContext } from 'react';
+import { StoreContext } from '../context/StoreContext';
 
 const Login = () => {
 
@@ -11,6 +13,7 @@ const Login = () => {
 
     const navigate = useNavigate();
 
+    const {setUserName} = useContext(StoreContext);
 
     //These are props of useForm
     const {
@@ -46,6 +49,7 @@ const Login = () => {
         //     message: "Invalid password",
         // });
     } else if (resValue === "granted") {
+        setUserName(data.email);
         // Navigate to another page if access is granted
         navigate("/home"); 
     }

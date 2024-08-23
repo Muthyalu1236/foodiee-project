@@ -80,8 +80,8 @@
 }
 
 .signup {
-  margin: auto;
-  align-self: center;
+  /* margin: auto; */
+  /* align-self: center; */
   background-color: #282828;
   border: none;
   border-radius: 5px;
@@ -98,6 +98,12 @@
 .box p{
   color: rgb(255, 0, 0);
   font-weight: 600;
+}
+
+.register-buttons{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
 }
 
 .banner{

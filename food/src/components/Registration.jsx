@@ -118,8 +118,10 @@ const Registration = () => {
             />
             {errors.phone && <p>{errors.phone.message}</p>}
         </div>
-        <input className='signup' type="submit" value="Sign Up" />
-        <input onClick={()=>{navigate("/")}} className='signin' type="submit" value="Login in" />
+        <div className="register-buttons">
+          <input className='signup' type="submit" value="Sign Up" />
+          <input onClick={()=>{navigate("/")}} className='signin' type="submit" value="Login in" />
+        </div>
         </form>
     </div>
   );
