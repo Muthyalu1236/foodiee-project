@@ -1,0 +1,27 @@
+.nav-bar{
+    /* border: 2px solid red; */
+    height: 10vh;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    /* background-color: rgb(255, 251, 173); */
+    background-color: rgba(174, 238, 84, 0.615);
+}
+
+.logo{
+    font-size: x-large;
+    font-weight: 600;
+}
+
+.nav-right{
+    display: flex;
+    gap: 20px;
+    font-size: larger;
+    font-weight: 500;
+}
+
+.nav-right > *{
+    cursor: pointer;
+}
+
