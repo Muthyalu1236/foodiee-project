@@ -23,15 +23,6 @@ public class OrdersController {
 	@Autowired
 	OrdersRepository ordersRepo;
 	
-	@PostMapping("/insert")
-	public ResponseEntity<String> insertOrder(@RequestBody Orders order){
-		
-		ordersRepo.save(order);
-		
-		return new ResponseEntity<>("Order inserted successfully."+order.getFooditem(),HttpStatus.OK);
-		
-	}
-	
 	@PostMapping("/insertAll")
 	public ResponseEntity<String> insertAllOrders(@RequestBody List<Orders> orders){
 		
@@ -40,23 +31,6 @@ public class OrdersController {
 		return new ResponseEntity<>("Multiple orders inserted successfully.",HttpStatus.OK);
 	}
 	
-//	@GetMapping("/get")
-//	public ResponseEntity<List<Orders>> getOrders(){
-//		
-//		List<Orders> orders = ordersRepo.findAll();
-//		
-//		return new ResponseEntity<>(orders,HttpStatus.OK);
-//		
-//	}
-//	
-//	@GetMapping("/getBy/{username}")
-//	public ResponseEntity<List<Orders>> getOrders(@PathVariable String username){
-//		
-//		List<Orders> orders = ordersRepo.findByUsername(username);
-//		
-//		return new ResponseEntity<>(orders,HttpStatus.OK);
-//		
-//	}
 	
 
 }
