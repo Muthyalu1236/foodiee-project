@@ -10,9 +10,9 @@ const Home = () => {
 
   return (
     <>
-
+      {/* Adding all the components */}
       <div className="home-container">
-        <Navbar />
+        <Navbar /> 
         <Header />
         <FoodMenu />
         <Footer />

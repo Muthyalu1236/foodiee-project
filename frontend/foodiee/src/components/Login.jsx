@@ -20,7 +20,6 @@ const Login = () => {
         register,   //registers the fields and helps to perform form validation
         handleSubmit,   //handles submit and returns fields and values as objects
         formState : {errors},  //helps to display error message
-        // setError,
         clearErrors
     } = useForm();
 
@@ -28,14 +27,14 @@ const Login = () => {
     //To handle submit
     const onSubmit = async (data)=>{
 
-      clearErrors();
+      clearErrors();   //to clear errors
 
       const resValue = await validate(data).then((res)=>{return res.data});
 
       if (resValue === "email") {
-        toast.warning("Invalid username")
+        toast.error("Invalid username")
     } else if (resValue === "password") {
-      toast.error("Invalid password")
+        toast.error("Invalid password")
     } else if (resValue === "granted") {
 
       toast.success("Successfully logged in!");
@@ -50,11 +49,11 @@ const Login = () => {
 
   return (
     <>
-    <ToastContainer />
+    <ToastContainer />     {/*//to display popup */}
     <div style={bgImgStyle} className="login">
 
 
-      <form className='box' onSubmit={handleSubmit(onSubmit)}>
+      <form className='box' onSubmit={handleSubmit(onSubmit)}>       
         <h2>Login</h2>
         <div className='inputbox'>
             <input

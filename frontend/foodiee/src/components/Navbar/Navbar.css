@@ -1,12 +1,13 @@
 .nav-bar{
-    /* border: 2px solid red; */
+    position: fixed;
     height: 10vh;
     width: 100vw;
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    /* background-color: rgb(255, 251, 173); */
-    background-color: rgba(174, 238, 84, 0.615);
+    background-color: rgb(174, 238, 84);
+    z-index: 5;
+    top: 0;
 }
 
 .logo{

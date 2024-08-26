@@ -3,22 +3,27 @@ import { useState } from "react";
 import "./PaymentForm.css";
 
 const PaymentForm = () => {
+
+  //setting true or false for what to display.
   const [isCard, setIsCard] = useState(false);
   const [isUpi, setIsUpi] = useState(false);
   const [isCod, setIsCod] = useState(false);
 
+  //to display credit/debit card form.
   const handleCard = () => {
     setIsCard(true);
     setIsUpi(false);
     setIsCod(false);
   };
 
+  //to display upi.
   const handleUpi = () => {
     setIsCard(false);
     setIsUpi(true);
     setIsCod(false);
   };
 
+  //to display cash on delivery.
   const handleCod = () => {
     setIsCard(false);
     setIsUpi(false);
@@ -39,8 +44,10 @@ const PaymentForm = () => {
 
         <div className="payment-details">
 
+            {/* display to select message if none are true. */}
             {!isCard && !isCod && !isUpi && <h3>Please select payment method.</h3>}
 
+            {/* display credit or debit card if it is true */}
             {isCard && 
             
             <div className="card-method">
@@ -82,6 +89,7 @@ const PaymentForm = () => {
             
             }
 
+          {/* display upi if it is true */}
           {isUpi && 
           
             <div className="upi-method">
@@ -91,6 +99,8 @@ const PaymentForm = () => {
           
           }
 
+
+          {/* display cod if it is true */}
           {isCod && 
           
             <div className="cod-method">

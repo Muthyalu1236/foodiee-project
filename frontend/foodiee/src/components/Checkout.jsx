@@ -6,6 +6,7 @@ import Payment from './Checkout/Payment';
 const Checkout = () => {
   return (
     <>
+        {/* Adding navbar, cart and payment components */}
         <Navbar />
         <div className="checkout-container">
             <Cart />

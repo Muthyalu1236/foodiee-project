@@ -6,9 +6,9 @@ import Food from './Food';
 
 const FoodMenu = () => {
 
-  const [veg, setVeg] = useState([]);
-  const [nonveg, setNonveg] = useState([]);
-  const [chinese, setChinese] = useState([]);
+  const [veg, setVeg] = useState([]);          //To store veg items
+  const [nonveg, setNonveg] = useState([]);     //To store nonveg items
+  const [chinese, setChinese] = useState([]);    //To store chinese items
   const [selectedType, setSelectedType] = useState('');
 
   const foodMenuItems = ["veg","nonveg","chinese"];
@@ -16,7 +16,9 @@ const FoodMenu = () => {
   useEffect(() => {
 
     const fetchData = async ()=>{
-        const vegFood = await getFoodItems("veg").then((res)=>{return res.data});
+      //to get food items from the backend and store in usestate variables.
+
+        const vegFood = await getFoodItems("veg").then((res)=>{return res.data});       
         setVeg(vegFood);
 
         const nonvegFood = await getFoodItems("nonveg").then((res)=>{return res.data});
@@ -31,6 +33,7 @@ const FoodMenu = () => {
   }, [])
 
   const getFoodItemsToDisplay = () => {
+    //returning list of stored items on click
     if (selectedType === "veg") {
       return veg;
     } else if (selectedType === "nonveg") {
@@ -49,7 +52,7 @@ const FoodMenu = () => {
   return (
     <>
        <div  className="food-menu-container">    
-
+            {/* displaying menu items */}
             {foodMenuItems.map((foodMenuType)=>{
 
             return <div key={foodMenuType} className="food-menu" id={foodMenuType} onClick={() => handleMenuClick(foodMenuType)}>
@@ -57,7 +60,7 @@ const FoodMenu = () => {
                     </div>
             })}
         </div>
-
+            {/* displaying food items */}
         <div className="food-item-container">
             {getFoodItemsToDisplay().map((item) => (
             <Food key={item.id} item={item} />

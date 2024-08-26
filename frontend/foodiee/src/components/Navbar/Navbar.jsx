@@ -6,9 +6,9 @@ import { StoreContext } from '../../context/StoreContext';
 
 const Navbar = () => {
 
-  const navigate = useNavigate();
+  const navigate = useNavigate();   //To navigate to pages.
 
-  const {userName} = useContext(StoreContext);
+  const {userName} = useContext(StoreContext);    //To get username from login page.
 
   return (
     <div className="nav-bar">

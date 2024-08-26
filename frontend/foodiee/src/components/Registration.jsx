@@ -47,6 +47,7 @@ const Registration = () => {
 
     const isExcists = await isEmailOrPhoneExcists(data).then((res)=>{return res.data});
     if(isExcists){
+      toast.error("Email or phone already exists");
       return;
     }
     registerUser(data);
@@ -75,7 +76,8 @@ const Registration = () => {
                 maxLength: { value: 20, message: "Name cannot exceed 20 characters" } 
             })}
             />
-            {errors.username && <p>{errors.username.message}</p>}
+            {/* to display error */}
+            {errors.username && <p>{errors.name.message}</p>}
 
             <input
             className='placeholder-slate-100'
@@ -123,8 +125,10 @@ const Registration = () => {
             {errors.phone && <p>{errors.phone.message}</p>}
         </div>
         <div className="register-buttons">
+          {/* to trigger submit */}
           <input className='signup' type="submit" value="Sign Up" />
-          <input onClick={()=>{navigate("/")}} className='signin' type="submit" value="Login in" />
+          {/* to navigate to signin page */}
+          <input onClick={()=>{navigate("/")}} className='signin' type="submit" value="Login in" />   
         </div>
         </form>
     </div>

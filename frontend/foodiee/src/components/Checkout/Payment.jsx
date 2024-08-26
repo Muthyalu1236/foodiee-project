@@ -8,17 +8,14 @@ import { useNavigate } from 'react-router-dom'
 
 const Payment = () => {
 
-    const navigate = useNavigate();
+    const navigate = useNavigate();    //to navigate
 
-    const {insertCartToDatabase, cartDb, totalPayable} = useContext(StoreContext);
+    const {insertCartToDatabase, cartDb, totalPayable} = useContext(StoreContext);    //Using variables and methods in storecontext using usecontext.
 
     const handleClick = async ()=>{
-        console.log("before calling")
-        insertCartToDatabase();
-        const resData = await insertOrders(cartDb);
-        console.log(resData);
-        console.log("After calling")
-        navigate("/thankyou")
+        insertCartToDatabase();        
+        await insertOrders(cartDb);       //insert data into database.
+        navigate("/thankyou")   //navigating to thankyou page.
     }
 
   return (

@@ -3,6 +3,7 @@ import { useEffect , useState} from 'react';
 
 const Header = () => {
 
+  //List of header tags.
   const headerTags = [
     {
       tagline: "Delicious Delivered Fast.",
@@ -46,6 +47,7 @@ const Header = () => {
     }
   ]
 
+  //To get random header tag
   function getRandomTagline() {
     const randomIndex = Math.floor(Math.random() * headerTags.length);
     return headerTags[randomIndex];
@@ -54,6 +56,7 @@ const Header = () => {
   const [tagline, setTagline] = useState('');
   const [description, setDescription] = useState('');
 
+  //to set header tag on first render.
   useEffect(() => {
     const selectedTag = getRandomTagline();
     setTagline(selectedTag.tagline);

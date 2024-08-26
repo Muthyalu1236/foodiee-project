@@ -4,7 +4,10 @@ import './Food.css';
 import { StoreContext } from '../../context/StoreContext';
 
 const Food = ({ item }) => {
-    const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);
+
+    //cartItems variable with cart items. 
+    //addToCart , removeFromCart methods to add and remove items from cart.
+    const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);      
 
     return (
         <div className="food-item">
@@ -23,9 +26,9 @@ const Food = ({ item }) => {
                         <button className='add' onClick={() => { addToCart(item.name, item.price) }}>Add</button>
                     ) : (
                         <div className="add-rem-buttons">
-                            <div className='add-button' onClick={() => { addToCart(item.name, item.price) }}> + </div>
-                            <p>{cartItems[item.name].quantity}</p>
                             <div className='rem-button' onClick={() => { removeFromCart(item.name) }}> - </div>
+                            <p>{cartItems[item.name].quantity}</p>
+                            <div className='add-button' onClick={() => { addToCart(item.name, item.price) }}> + </div> 
                         </div>
                     )}
                 </div>
